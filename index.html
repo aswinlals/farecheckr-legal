@@ -19,26 +19,42 @@
   ul { padding-left: 20px; }
   li { margin-bottom: 6px; }
   a { color: #2563eb; }
+  .summary { background: #f5f7fa; border-radius: 8px; padding: 16px 20px; }
   .contact { background: #f5f7fa; border-radius: 8px; padding: 16px 20px; margin-top: 32px; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0b0f14; color: #e5e7eb; }
+    .updated { color: #9ca3af; }
+    .summary, .contact { background: #161c24; }
+    a { color: #60a5fa; }
+  }
 </style>
 </head>
 <body>
   <h1>FareCheckr Privacy Policy</h1>
-  <p class="updated">Last updated: September 21, 2026</p>
+  <p class="updated">Last updated: September 26, 2026</p>
 
   <p>
     FareCheckr ("the app") helps riders compare GPS-tracked auto-rickshaw routes
     against official regional fare rates, so they can identify overcharging and,
     if they choose, file a complaint with the relevant transport authority.
-    This policy explains what data the app uses and how.
+    This policy explains what data the app uses, where it goes, and how long it is kept.
   </p>
 
+  <div class="summary">
+    <strong>In short</strong>
+    <ul>
+      <li>There are no accounts, and we do not ask for your name, phone number or email.</li>
+      <li>The places you search for and the locations you travel to are <strong>not stored by us</strong>. They pass through our server only to get an answer from Google.</li>
+      <li>We keep a small amount of <strong>anonymous statistics</strong> (counts and fare numbers) that cannot be linked to you.</li>
+      <li>Your ride history stays on your phone.</li>
+      <li>We do not sell your data and we do not show advertisements.</li>
+    </ul>
+  </div>
+
   <h2>Location data</h2>
-  <p>
-    FareCheckr uses your device's location to:
-  </p>
+  <p>FareCheckr uses your device's location to:</p>
   <ul>
-    <li>Show your current position when you plan a ride.</li>
+    <li>Suggest your current position as the pickup when you plan a ride.</li>
     <li>Track your actual GPS route during an active ride, so it can be compared
       against the recommended route and used to calculate a fair fare.</li>
   </ul>
@@ -46,67 +62,121 @@
     Route tracking only works while FareCheckr is open and in the foreground. If you
     switch apps or lock your phone during a ride, tracking pauses until you return
     to the app. Tracking stops automatically when the ride ends or is cancelled.
+    You can refuse the location permission and still use the app by entering the
+    pickup manually; the actual route then cannot be tracked.
+  </p>
+
+  <h2>What is sent to our server, and what happens to it</h2>
+  <p>
+    To show search results, routes and addresses, the app sends requests to the
+    FareCheckr server (hosted on Cloudflare), which forwards them to Google and
+    returns Google's answer. Depending on what you do, a request contains:
+  </p>
+  <ul>
+    <li>the text you type when searching for a place, and your approximate position to rank nearby results;</li>
+    <li>the pickup and drop coordinates of a trip you are planning;</li>
+    <li>a coordinate, when the app looks up the address of a point on the map;</li>
+    <li>at the end of a ride, your GPS route (a list of coordinates), so it can be matched to roads for an accurate distance.</li>
+  </ul>
+  <p>
+    <strong>The FareCheckr server does not store this information.</strong> It is used only to
+    answer the request. Google processes it under its own terms (see "Third-party services").
+    Our own logs record only whether a request succeeded or failed, never the text, places or
+    coordinates. Cloudflare, as our hosting provider, may keep short-lived technical logs of
+    connections (such as time, result and network address) under
+    <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's Privacy Policy</a>; we do not store IP addresses ourselves.
   </p>
   <p>
-    FareCheckr does not currently operate a backend server, and location data
-    collected during a ride is not sent to FareCheckr. Location data leaves your
-    device only if you choose to file a complaint, in which case the relevant ride
-    details (including pickup/drop addresses) are included in an email you send
-    yourself, as described below.
+    If the server cannot be reached, or a daily limit has been reached, the app falls back to free
+    OpenStreetMap services (search and routing). In that case the text you search for and the
+    coordinates involved are sent <strong>directly from your phone</strong> to those public services, which
+    handle them under their own policies (see below).
+  </p>
+
+  <h2>Anonymous statistics</h2>
+  <p>To understand how the app is used and to improve it, the app sends anonymous statistics:</p>
+  <ul>
+    <li><strong>Events:</strong> that the app was opened, a ride was started, or a complaint was started, with the city and app version.</li>
+    <li><strong>A summary of each finished ride, using numbers only:</strong> the distance (rounded to the nearest half kilometre), the recommended fare, the fare on the route you actually travelled, the amount you were charged, whether it was night time, a return trip or included a one-way surcharge, whether you went on to a complaint, the city, the app version and the date.</li>
+  </ul>
+  <p>
+    These summaries contain <strong>no locations, addresses, place names, vehicle numbers, contact details or
+    device identifiers</strong>, and they cannot be linked to you or to your phone. Ride summaries are kept for up to
+    about 13 months; event counts are kept only as totals.
+  </p>
+
+  <h2>Installation code</h2>
+  <p>
+    The first time the app runs, our server gives it a random code. The app attaches this code to its
+    requests so the server can limit how many requests one installation can make each day, which protects
+    the service from misuse and keeps it free. The code is not linked to your name, phone or accounts. The
+    daily counters that use it are deleted after 7 days.
   </p>
 
   <h2>Ride and complaint data</h2>
   <p>
-    Ride details (pickup and drop locations, distances, fares, and the
-    autorickshaw number if you enter it) are stored locally on your device so you
-    can review your ride history within the app. This data is not transmitted to
-    FareCheckr or any third party automatically.
+    Ride details (pickup and drop locations, distances, fares, and the autorickshaw number if you enter
+    it) are stored <strong>only on your device</strong> so you can review your ride history within the app.
+    The app keeps your most recent rides and you can clear them at any time.
   </p>
   <p>
-    If you choose to file a complaint, the app pre-fills an email with your ride
-    details and opens your device's email app so you can review and send it
-    yourself to the relevant transport authority's official complaints address.
-    FareCheckr does not send this email on your behalf or see its contents after
-    you send it.
+    If you choose to file a complaint, the app pre-fills an email with your ride details and opens your
+    device's email app so you can review and send it yourself to the relevant transport authority.
+    FareCheckr does not send this email on your behalf and does not see its contents.
   </p>
 
   <h2>Third-party services</h2>
-  <p>The app uses the following third-party services to function:</p>
+  <p>The app relies on the following services to function:</p>
   <ul>
-    <li><strong>Google Maps, Places, Routes, and Roads APIs</strong> — used to
-      display maps, search for locations, calculate routes, and improve the
-      accuracy of tracked distances. Your location and search queries are sent to
-      Google as part of these requests, governed by
-      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+    <li><strong>Google Maps Platform</strong> (Maps, Places, Routes, Roads and Geocoding) &mdash; to display maps, search for
+      places, calculate routes, snap tracked routes to roads and find addresses. The map itself is loaded
+      directly from Google by your phone. Governed by
+      <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</li>
+    <li><strong>Cloudflare</strong> &mdash; hosts the FareCheckr server. Governed by
+      <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's Privacy Policy</a>.</li>
+    <li><strong>OpenStreetMap services (Nominatim and OSRM)</strong> &mdash; used only as a free fallback when the
+      FareCheckr server is unavailable. Governed by the
+      <a href="https://osmfoundation.org/wiki/Privacy_Policy">OpenStreetMap Foundation's Privacy Policy</a>.</li>
+    <li><strong>GitHub</strong> &mdash; hosts this policy and, for older versions of the app, a small file used to tell an
+      outdated app to update.</li>
   </ul>
   <p>
-    FareCheckr does not currently show advertisements. If that changes in a future
-    update, this policy will be updated first to disclose it.
+    FareCheckr does not currently show advertisements. If that changes in a future update, this policy will
+    be updated first to disclose it.
+  </p>
+
+  <h2>Security</h2>
+  <p>
+    All communication between the app and the FareCheckr server uses encrypted connections (HTTPS).
+    Our secret keys are kept on the server and are not included in the app.
   </p>
 
   <h2>Data retention and deletion</h2>
+  <ul>
+    <li><strong>On your phone:</strong> ride history stays until you delete it in the app, uninstall the app, or clear its storage.</li>
+    <li><strong>Search text, places, coordinates and GPS routes:</strong> not stored by FareCheckr.</li>
+    <li><strong>Installation-code counters:</strong> deleted after 7 days.</li>
+    <li><strong>Anonymous ride summaries:</strong> kept for up to about 13 months. Because they are not linked to you, we cannot identify or delete a particular person's summary.</li>
+  </ul>
   <p>
-    Ride history is stored on your device using standard app storage and remains
-    until you delete it from within the app, uninstall the app, or clear the app's
-    storage through your device settings. FareCheckr has no server-side copy to
-    delete, because none is kept.
+    Uninstalling the app removes everything stored on your phone, including the installation code. If you have
+    any concern about your data, contact us using the address below.
   </p>
 
   <h2>Children's privacy</h2>
   <p>
-    FareCheckr is not directed at children and does not knowingly collect data from
-    children.
+    FareCheckr is not directed at children and does not knowingly collect data from children.
   </p>
 
   <h2>Changes to this policy</h2>
   <p>
-    If this policy changes, the "Last updated" date above will change accordingly.
-    Continued use of the app after an update means you accept the revised policy.
+    If this policy changes, the "Last updated" date above will change accordingly. Continued use of the app
+    after an update means you accept the revised policy.
   </p>
 
   <div class="contact">
     <strong>Contact</strong><br />
-    Questions about this policy or your data can be sent to:
+    Questions about this policy or your data can be sent to:<br />
     <a href="mailto:aswinlalmuthuvila@gmail.com">aswinlalmuthuvila@gmail.com</a>
   </div>
 </body>
