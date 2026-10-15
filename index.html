@@ -31,22 +31,21 @@
 </head>
 <body>
   <h1>FareCheckr Privacy Policy</h1>
-  <p class="updated">Last updated: September 26, 2026</p>
+  <p class="updated">Last updated: October 11, 2026</p>
 
   <p>
-    FareCheckr ("the app") helps riders compare GPS-tracked auto-rickshaw routes
-    against official regional fare rates, so they can identify overcharging and,
-    if they choose, file a complaint with the relevant transport authority.
+    FareCheckr ("the app") helps riders estimate auto-rickshaw and student bus fares,
+    track auto-rickshaw rides, and prepare complaints to transport authorities.
     This policy explains what data the app uses, where it goes, and how long it is kept.
   </p>
 
   <div class="summary">
     <strong>In short</strong>
     <ul>
-      <li>There are no accounts, and we do not ask for your name, phone number or email.</li>
-      <li>The places you search for and the locations you travel to are <strong>not stored by us</strong>. They pass through our server only to get an answer from Google.</li>
-      <li>We keep a small amount of <strong>anonymous statistics</strong> (counts and fare numbers) that cannot be linked to you.</li>
-      <li>Your ride history stays on your phone.</li>
+      <li>There are no accounts. Complaint forms let you optionally enter your name and contact number, and an institution name for student complaints.</li>
+      <li>Search text and location data pass through our server to obtain results from Google. Our server does not retain them; selected places and ride details can be saved on your device.</li>
+      <li>We keep <strong>anonymous statistics</strong> (counts and fare numbers) without names, contact details, exact locations or installation codes in ride summaries.</li>
+      <li>Your ride history, including auto-rickshaw complaint details you enter, stays on your device. Complaint emails are shared with your chosen email service and recipient when you send them.</li>
       <li>We do not sell your data and we do not show advertisements.</li>
     </ul>
   </div>
@@ -59,9 +58,12 @@
       against the recommended route and used to calculate a fair fare.</li>
   </ul>
   <p>
-    Route tracking only works while FareCheckr is open and in the foreground. If you
-    switch apps or lock your phone during a ride, tracking pauses until you return
-    to the app. Tracking stops automatically when the ride ends or is cancelled.
+    In native builds, with background location permission, tracking can continue during
+    an active ride while your screen is locked or you use another app. Android shows
+    an ongoing tracking notification. Tracking stops when you end or cancel the ride.
+    Without background permission, or in Expo Go and the web version, tracking works
+    only while the app is open. Missing GPS coverage causes a route-based estimate;
+    background access does not guarantee uninterrupted tracking if the system stops the app.
     You can refuse the location permission and still use the app by entering the
     pickup manually; the actual route then cannot be tracked.
   </p>
@@ -87,21 +89,22 @@
     <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's Privacy Policy</a>; we do not store IP addresses ourselves.
   </p>
   <p>
-    If the server cannot be reached, or a daily limit has been reached, the app falls back to free
-    OpenStreetMap services (search and routing). In that case the text you search for and the
-    coordinates involved are sent <strong>directly from your phone</strong> to those public services, which
-    handle them under their own policies (see below).
+    When Google routing is unavailable, the app may request a fallback driving route
+    from the public OSRM service, sending pickup and drop coordinates
+    <strong>directly from your device</strong>. Development builds may also use Nominatim
+    for fallback place searches. These services handle requests under their own policies.
   </p>
 
   <h2>Anonymous statistics</h2>
   <p>To understand how the app is used and to improve it, the app sends anonymous statistics:</p>
   <ul>
     <li><strong>Events:</strong> that the app was opened, a ride was started, or a complaint was started, with the city and app version.</li>
-    <li><strong>A summary of each finished ride, using numbers only:</strong> the distance (rounded to the nearest half kilometre), the recommended fare, the fare on the route you actually travelled, the amount you were charged, whether it was night time, a return trip or included a one-way surcharge, whether you went on to a complaint, the city, the app version and the date.</li>
+    <li><strong>Search counts:</strong> successful searches, the number of suggestions returned, searches with no suggestions, and selections from search results or recent places. These counts contain no search text, place names, addresses, coordinates or place identifiers.</li>
+    <li><strong>Auto-rickshaw ride summaries:</strong> for ended and saved rides, the app attempts to send distance (rounded to the nearest half kilometre), recommended and calculated fares, amount charged if entered, whether the fare is estimated or tracked, night / return trip / one-way surcharge flags, whether a complaint was prepared, city, app version and date. A random code per ride prevents duplicate records when a request is retried; it is not an installation code. A calculated fare may be an estimate if tracking was incomplete or the ride was checked without tracking. Failed deliveries are retried from a local queue holding at most 100 summaries for up to 7 days; delivery is not guaranteed.</li>
   </ul>
   <p>
     These summaries contain <strong>no locations, addresses, place names, vehicle numbers, contact details or
-    device identifiers</strong>, and they cannot be linked to you or to your phone. Ride summaries are kept for up to
+    installation codes or device identifiers</strong>. Ride summaries are kept for up to
     about 13 months; event counts are kept only as totals.
   </p>
 
@@ -115,14 +118,30 @@
 
   <h2>Ride and complaint data</h2>
   <p>
-    Ride details (pickup and drop locations, distances, fares, and the autorickshaw number if you enter
-    it) are stored <strong>only on your device</strong> so you can review your ride history within the app.
-    The app keeps your most recent rides and you can clear them at any time.
+    The active auto-rickshaw ride and your most recent 100 saved rides are stored on your
+    device. Saved details include pickup and drop locations, distance, fare, waiting time
+    and, if entered for a complaint, the amount charged, vehicle registration number,
+    ride date and time, traveller name and contact number. You can clear ride history in the app.
+    Numeric fare statistics may also be sent as described above; personal complaint details
+    are not included in those statistics.
   </p>
   <p>
-    If you choose to file a complaint, the app pre-fills an email with your ride details and opens your
-    device's email app so you can review and send it yourself to the relevant transport authority.
-    FareCheckr does not send this email on your behalf and does not see its contents.
+    Student bus complaint forms include stops, amount charged, ride date and time, and
+    optional bus name, registration number, student name, contact number and institution name.
+    Once you prepare an email, these student complaint details and your edited message
+    are saved in a local draft on your device. They are not saved in ride history or
+    sent to the FareCheckr backend.
+  </p>
+  <p>
+    For both complaint types, you can edit the recipient, subject and message inside the app.
+    The app then hands the draft to your device's email composer or chosen email app.
+    FareCheckr does not send the email automatically or upload the message to its backend.
+    Your email service receives the draft when it is handed over, and the recipient receives
+    it if you send it. Their privacy and retention policies apply. An email handoff does not
+    confirm that a complaint was sent. FareCheckr retains the latest auto-rickshaw and
+    student complaint drafts locally so edits survive email handoff. Starting another
+    complaint of the same type replaces its draft. Clearing ride history also removes
+    these local complaint drafts; clearing app storage removes them too.
   </p>
 
   <h2>Third-party services</h2>
@@ -134,9 +153,12 @@
       <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</li>
     <li><strong>Cloudflare</strong> &mdash; hosts the FareCheckr server. Governed by
       <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's Privacy Policy</a>.</li>
-    <li><strong>OpenStreetMap services (Nominatim and OSRM)</strong> &mdash; used only as a free fallback when the
-      FareCheckr server is unavailable. Governed by the
+    <li><strong>OSRM and Nominatim</strong> &mdash; public fallback routing and development search services
+      using OpenStreetMap data. Their operators process the coordinates or search text sent
+      to them. See the <a href="https://project-osrm.org/">OSRM project</a> and
       <a href="https://osmfoundation.org/wiki/Privacy_Policy">OpenStreetMap Foundation's Privacy Policy</a>.</li>
+    <li><strong>Your email service and chosen complaint recipient</strong> &mdash; process complaint drafts
+      and sent messages under their own policies.</li>
     <li><strong>GitHub</strong> &mdash; hosts this policy and, for older versions of the app, a small file used to tell an
       outdated app to update.</li>
   </ul>
@@ -148,24 +170,31 @@
   <h2>Security</h2>
   <p>
     All communication between the app and the FareCheckr server uses encrypted connections (HTTPS).
-    Our secret keys are kept on the server and are not included in the app.
+    Google web-service credentials are kept on the server. Native map-display keys are
+    included in the app and require platform and application restrictions.
   </p>
 
   <h2>Data retention and deletion</h2>
   <ul>
-    <li><strong>On your phone:</strong> ride history stays until you delete it in the app, uninstall the app, or clear its storage.</li>
-    <li><strong>Search text, places, coordinates and GPS routes:</strong> not stored by FareCheckr.</li>
+    <li><strong>On your device:</strong> ride history keeps the most recent 100 rides, including entered auto-rickshaw complaint details, until removed by the history limit, cleared in the app, or removed with app storage.</li>
+    <li><strong>Search text, places, coordinates and GPS routes:</strong> not retained by the FareCheckr server. Recent places and ride information can remain in local app storage.</li>
+    <li><strong>Local complaint drafts:</strong> the latest draft per complaint type is kept until replaced, cleared with ride history, or removed with app storage. A saved draft older than 30 days is discarded when the complaint screen is reopened.</li>
+    <li><strong>Complaint emails:</strong> drafts and sent messages held by your email service or recipient are subject to their retention rules.</li>
     <li><strong>Installation-code counters:</strong> deleted after 7 days.</li>
     <li><strong>Anonymous ride summaries:</strong> kept for up to about 13 months. Because they are not linked to you, we cannot identify or delete a particular person's summary.</li>
   </ul>
   <p>
-    Uninstalling the app removes everything stored on your phone, including the installation code. If you have
-    any concern about your data, contact us using the address below.
+    Clearing FareCheckr's local storage removes its locally stored ride data and installation code.
+    It does not delete messages or drafts held by an email service or transport authority.
+    If you have any concern about your data, contact us using the address below.
   </p>
 
   <h2>Children's privacy</h2>
   <p>
-    FareCheckr is not directed at children and does not knowingly collect data from children.
+    FareCheckr includes student bus fare estimates. No account, student name, contact number
+    or institution name is needed to calculate a fare. Student complaint forms offer optional
+    personal details, handled as described above. Only include information needed for the
+    complaint; personal student details are not sent to FareCheckr's backend.
   </p>
 
   <h2>Changes to this policy</h2>
